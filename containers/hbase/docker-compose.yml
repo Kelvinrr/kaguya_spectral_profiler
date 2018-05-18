@@ -186,8 +186,8 @@ services:
       - SERVICE_16010_IGNORE=true
       - HBASE_ZOOKEEPER_QUORUM=zookeeper-1.vnet:2181,zookeeper-2.vnet:2181,zookeeper-3.vnet:2181
       - HBASE_TEMP_DIR=/hbase
-    volumes_from:
-      - namenode-1
+    volumes:
+      - vnamenode-1:/
     command: hmaster-1
 
   hmaster-2:
@@ -203,8 +203,8 @@ services:
       - SERVICE_16010_IGNORE=true
       - HBASE_ZOOKEEPER_QUORUM=zookeeper-1.vnet:2181,zookeeper-2.vnet:2181,zookeeper-3.vnet:2181
       - HBASE_TEMP_DIR=/hbase
-    volumes_from:
-      - namenode-2
+    volumes:
+      - vnamenode-2:/
     command: hmaster-2
 
   regionserver-1:
@@ -269,3 +269,5 @@ volumes:
   vdatanode-3:
   vhmaster-1:
   vhmaster-2:
+  vnamenode-1:
+  vnamenode-2:
