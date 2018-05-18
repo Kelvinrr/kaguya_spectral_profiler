@@ -1,4 +1,4 @@
-version: "2"
+version: "3"
 services:
 
   zookeeper-1:
@@ -185,7 +185,7 @@ services:
       - SERVICE_16000_NAME=hmaster
       - SERVICE_16010_IGNORE=true
       - HBASE_ZOOKEEPER_QUORUM=zookeeper-1.vnet:2181,zookeeper-2.vnet:2181,zookeeper-3.vnet:2181
-      - HBASE_TEMP_DIR=/hbase
+      - HBASE_TEMP_DIR=/hadoop
     volumes:
       - vnamenode-1:/
     command: hmaster-1
@@ -204,7 +204,7 @@ services:
       - HBASE_ZOOKEEPER_QUORUM=zookeeper-1.vnet:2181,zookeeper-2.vnet:2181,zookeeper-3.vnet:2181
       - HBASE_TEMP_DIR=/hbase
     volumes:
-      - vnamenode-2:/
+      - vnamenode-2:/hadoop
     command: hmaster-2
 
   regionserver-1:
