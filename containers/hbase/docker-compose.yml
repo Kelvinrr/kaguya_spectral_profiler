@@ -1,4 +1,4 @@
-version: "3"
+version: "2"
 services:
 
   zookeeper-1:
@@ -185,9 +185,9 @@ services:
       - SERVICE_16000_NAME=hmaster
       - SERVICE_16010_IGNORE=true
       - HBASE_ZOOKEEPER_QUORUM=zookeeper-1.vnet:2181,zookeeper-2.vnet:2181,zookeeper-3.vnet:2181
-      - HBASE_TEMP_DIR=/hadoop
-    volumes:
-      - vnamenode-1:/hadoop/
+      - HBASE_TEMP_DIR=/hbase
+    volumes_from:
+      - namenode-1
     command: hmaster-1
 
   hmaster-2:
@@ -203,8 +203,8 @@ services:
       - SERVICE_16010_IGNORE=true
       - HBASE_ZOOKEEPER_QUORUM=zookeeper-1.vnet:2181,zookeeper-2.vnet:2181,zookeeper-3.vnet:2181
       - HBASE_TEMP_DIR=/hbase
-    volumes:
-      - vnamenode-2:/hadoop
+    volumes_from:
+      - namenode-2
     command: hmaster-2
 
   regionserver-1:
@@ -248,7 +248,7 @@ services:
       - HBASE_ZOOKEEPER_QUORUM=zookeeper-1.vnet:2181,zookeeper-2.vnet:2181,zookeeper-3.vnet:2181
     command: regionserver
 
-  thrift-1:
+  thirft-1:
     container_name: thrift-1
     networks: ["vnet"]
     hostname: thrift-1.vnet
@@ -269,5 +269,3 @@ volumes:
   vdatanode-3:
   vhmaster-1:
   vhmaster-2:
-  vnamenode-1:
-  vnamenode-2:
