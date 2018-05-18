@@ -248,7 +248,7 @@ services:
       - HBASE_ZOOKEEPER_QUORUM=zookeeper-1.vnet:2181,zookeeper-2.vnet:2181,zookeeper-3.vnet:2181
     command: regionserver
 
-  thirft-1:
+  thrift-1:
     container_name: thrift-1
     networks: ["vnet"]
     hostname: thrift-1.vnet
